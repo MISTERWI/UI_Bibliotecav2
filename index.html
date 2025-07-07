@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Biblioteca UI - Demo</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- ====== NAVBAR ====== -->
+    <header class="navbar">
+      <!-- Navegación principal -->
+      <nav class="navbar__nav">
+        <a href="#botones" class="navbar__link">Botones</a>
+        <a href="#formularios" class="navbar__link">Formularios</a>
+        <a href="#tarjetas" class="navbar__link">Tarjetas</a>
+        <a href="#modal" class="navbar__link">Modal</a>
+        <a href="#tooltip" class="navbar__link">Tooltip</a>
+        <a href="#tabs" class="navbar__link">Tabs</a>
+      </nav>
+    </header>
+
+    <main class="container">
+      <!-- ====== SECCIÓN DE BOTONES ====== -->
+      <section id="botones" class="section">
+        <!-- Botones reutilizables con distintos estados -->
+        <h2 class="section__title">Botones</h2>
+        <button
+          class="btn btn--primary"
+          onclick="alert('Botón Primario clickeado')"
+        >
+          Primario
+        </button>
+        <button
+          class="btn btn--secondary"
+          onclick="alert('Botón Secundario clickeado')"
+        >
+          Secundario
+        </button>
+        <button class="btn" disabled>Disabled</button>
+      </section>
+
+      <!-- ====== FORMULARIO DE DEMO ====== -->
+      <section id="formularios" class="section">
+        <!-- Formulario completo con inputs, select y checkbox -->
+        <h2 class="section__title">Formulario</h2>
+        <form id="demoForm" class="form" onsubmit="handleFormSubmit(event)">
+          <label for="name" class="form__label">Nombre:</label>
+          <input
+            id="name"
+            name="name"
+            type="text"
+            class="form__input"
+            required
+          />
+
+          <label for="email" class="form__label">Correo electrónico:</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            class="form__input"
+            required
+          />
+
+          <label for="options" class="form__label"
+            >Selecciona una opción:</label
+          >
+          <select id="options" name="options" class="form__select" required>
+            <option value="" disabled selected>Elige...</option>
+            <option value="op1">Opción 1</option>
+            <option value="op2">Opción 2</option>
+            <option value="op3">Opción 3</option>
+          </select>
+
+          <label class="form__label form__checkbox-label">
+            <input
+              type="checkbox"
+              name="agree"
+              class="form__checkbox"
+              required
+            />
+            Acepto términos y condiciones
+          </label>
+
+          <button type="submit" class="btn btn--primary">Enviar</button>
+        </form>
+      </section>
+
+      <!-- ====== TARJETAS DE CONTENIDO ====== -->
+      <section id="tarjetas" class="section">
+        <!-- Ejemplo de tarjetas reutilizables -->
+        <h2 class="section__title">Tarjetas</h2>
+        <div class="card">
+          <h3 class="card__title">Proyecto 1</h3>
+          <p class="card__content">
+            Aplicacion movil para pedidos de un restaurante.
+          </p>
+          <button
+            class="btn btn--secondary"
+            onclick="alert('Más información del proyecto 1')"
+          >
+            Más info
+          </button>
+        </div>
+        <div class="card">
+          <h3 class="card__title">Proyecto 2</h3>
+          <p class="card__content">
+            Prototipo para crear una app de compras en línea.
+          </p>
+          <button
+            class="btn btn--secondary"
+            onclick="alert('Más información del proyecto 2')"
+          >
+            Más info
+          </button>
+        </div>
+      </section>
+
+      <!-- ====== MODAL INTERACTIVO ====== -->
+      <section id="modal-section" class="section">
+        <!-- Ventana modal centrada con contenido -->
+        <h2 class="section__title">Modal</h2>
+        <button class="btn btn--primary" id="openModalBtn">Abrir Modal</button>
+        <div
+          id="modal"
+          class="modal"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="modalTitle"
+          aria-hidden="true"
+        >
+          <div class="modal__content">
+            <h3 id="modalTitle">Información Importante</h3>
+            <ul>
+              <li>✅ Es accesible desde cualquier sección.</li>
+              <li>✅ Es compatible con dispositivos móviles.</li>
+              <li>✅ Cierre con botón.</li>
+            </ul>
+            <button class="btn btn--secondary" id="closeModalBtn">
+              Cerrar
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====== TOOLTIP ====== -->
+      <section id="tooltip" class="section">
+        <!-- Texto emergente al pasar el mouse -->
+        <h2 class="section__title">Tooltip</h2>
+        <button class="btn btn--primary tooltip" aria-describedby="tooltip1">
+          Hover me
+          <span role="tooltip" id="tooltip1" class="tooltip__text"
+            >Soy un tooltip útil</span
+          >
+        </button>
+      </section>
+
+      <!-- ====== TABS INTERACTIVOS ====== -->
+      <section id="tabs" class="section">
+        <!-- Contenido con pestañas funcionales -->
+        <h2 class="section__title">Tabs</h2>
+        <div class="tabs">
+          <nav class="tabs__nav" role="tablist">
+            <button
+              class="tabs__button tabs__button--active"
+              role="tab"
+              aria-selected="true"
+              aria-controls="tab1"
+              id="tab1-btn"
+            >
+              Tab 1
+            </button>
+            <button
+              class="tabs__button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="tab2"
+              id="tab2-btn"
+            >
+              Tab 2
+            </button>
+          </nav>
+          <div
+            class="tabs__panel"
+            id="tab1"
+            role="tabpanel"
+            aria-labelledby="tab1-btn"
+          >
+            Contenido del Tab 1
+          </div>
+          <div
+            class="tabs__panel tabs__panel--hidden"
+            id="tab2"
+            role="tabpanel"
+            aria-labelledby="tab2-btn"
+          >
+            Contenido del Tab 2
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- ====== SCRIPTS PARA FUNCIONALIDAD ====== -->
+    <script>
+      // JS para formulario, modal y tabs
+      function handleFormSubmit(e) {
+        e.preventDefault();
+        const form = e.target;
+        alert(
+          `Formulario enviado:\nNombre: ${form.name.value}\nEmail: ${form.email.value}\nOpción: ${form.options.value}\nAceptó términos: ${form.agree.checked}`
+        );
+        form.reset();
+      }
+
+      // Modal open/close
+      const modal = document.getElementById("modal");
+      const openModalBtn = document.getElementById("openModalBtn");
+      const closeModalBtn = document.getElementById("closeModalBtn");
+
+      openModalBtn.addEventListener("click", () => {
+        modal.setAttribute("aria-hidden", "false");
+        modal.style.display = "flex";
+      });
+
+      closeModalBtn.addEventListener("click", () => {
+        modal.setAttribute("aria-hidden", "true");
+        modal.style.display = "none";
+      });
+
+      // Tabs functionality
+      const tabsButtons = document.querySelectorAll(".tabs__button");
+      const tabsPanels = document.querySelectorAll(".tabs__panel");
+
+      tabsButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          // Remove active states
+          tabsButtons.forEach((btn) => {
+            btn.classList.remove("tabs__button--active");
+            btn.setAttribute("aria-selected", "false");
+          });
+          tabsPanels.forEach((panel) =>
+            panel.classList.add("tabs__panel--hidden")
+          );
+
+          // Activate clicked tab and panel
+          button.classList.add("tabs__button--active");
+          button.setAttribute("aria-selected", "true");
+          const panel = document.getElementById(
+            button.getAttribute("aria-controls")
+          );
+          panel.classList.remove("tabs__panel--hidden");
+        });
+      });
+    </script>
+  </body>
+</html>

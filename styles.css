@@ -1,0 +1,313 @@
+/* ==========================
+   VARIABLES Y ESTILOS BASE
+=========================== */
+:root {
+  /* Colores y espaciado */
+  --color-primary: #ffb006;
+  --color-primary-hover: #0056b3;
+  --color-secondary: #0787f7;
+  --color-secondary-hover: #565e64;
+  --color-disabled: #c0c0c0;
+  --color-bg: #e6e7e9;
+  --color-text: #212529;
+  --font-base: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  --border-radius: 10px;
+  --transition-speed: 0.5s;
+}
+
+/* Reset y base */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-base);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+.container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+h2.section__title {
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--color-primary);
+  padding-bottom: 0.5rem;
+}
+
+/* ==========================
+   NAVBAR
+=========================== */
+.navbar {
+  /* Estilos del header de navegación */
+  background-color: var(--color-primary);
+  padding: 1rem 0;
+  margin-bottom: 2rem;
+}
+
+.navbar__nav {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.navbar__link {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  transition: background-color var(--transition-speed);
+}
+
+.navbar__link:hover,
+.navbar__link:focus {
+  background-color: var(--color-primary-hover);
+}
+
+/* ==========================
+   BOTONES
+=========================== */
+.btn {
+  /* Estilo común */
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border-radius: var(--border-radius);
+  border: none;
+  cursor: pointer;
+  transition: background-color var(--transition-speed),
+    transform var(--transition-speed);
+  user-select: none;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.btn--primary {
+  /* Estilo primario */
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.btn--primary:hover:not(:disabled) {
+  background-color: var(--color-primary-hover);
+  transform: scale(1.05);
+}
+
+.btn--secondary {
+  background-color: var(--color-secondary);
+  color: white;
+}
+
+.btn--secondary:hover:not(:disabled) {
+  background-color: var(--color-secondary-hover);
+  transform: scale(1.05);
+}
+
+.btn:disabled {
+  background-color: var(--color-disabled);
+  cursor: not-allowed;
+  color: #666;
+}
+
+/* ==========================
+   FORMULARIO
+=========================== */
+.form {
+  /* Layout del formulario */
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 400px;
+}
+
+.form__label {
+  font-weight: 600;
+}
+
+.form__input,
+.form__select {
+  padding: 0.5rem;
+  border-radius: var(--border-radius);
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  transition: border-color var(--transition-speed);
+}
+
+.form__input:focus,
+.form__select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 5px var(--color-primary);
+}
+
+.form__checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.form__checkbox {
+  width: 18px;
+  height: 18px;
+}
+
+/* ==========================
+   TARJETAS
+=========================== */
+.card {
+  /* Contenedor reutilizable de información */
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.card__title {
+  margin-top: 0;
+}
+
+.card__content {
+  margin-bottom: 1rem;
+}
+
+/* ==========================
+   MODAL
+=========================== */
+.modal {
+  /* Fondo oscuro */
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  z-index: 1000;
+}
+
+.modal__content {
+  /* Caja centrada del modal */
+  background-color: white;
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  text-align: left;
+  position: relative;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+/* ==========================
+   TOOLTIP
+=========================== */
+.tooltip {
+  /* Contenedor del tooltip */
+  position: relative;
+}
+
+.tooltip__text {
+  visibility: hidden;
+  background-color: var(--color-secondary);
+  color: white;
+  text-align: center;
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--border-radius);
+  position: absolute;
+  z-index: 1;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity var(--transition-speed);
+  width: max-content;
+  max-width: 200px;
+}
+
+.tooltip:hover .tooltip__text,
+.tooltip:focus-within .tooltip__text {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* ==========================
+   TABS
+=========================== */
+.tabs {
+  /* Contenedor de pestañas */
+  max-width: 500px;
+}
+
+.tabs__nav {
+  display: flex;
+  border-bottom: 2px solid var(--color-primary);
+}
+
+.tabs__button {
+  background: none;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--color-secondary);
+  transition: color var(--transition-speed),
+    border-bottom var(--transition-speed);
+  border-bottom: 3px solid transparent;
+}
+
+.tabs__button:hover,
+.tabs__button:focus {
+  color: var(--color-primary);
+  outline: none;
+}
+
+.tabs__button--active {
+  color: var(--color-primary);
+  border-bottom: 3px solid var(--color-primary);
+}
+
+.tabs__panel {
+  padding: 1rem 0;
+}
+
+.tabs__panel--hidden {
+  display: none;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .navbar__nav {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .form {
+    max-width: 100%;
+  }
+
+  .tabs__nav {
+    flex-direction: column;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
